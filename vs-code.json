@@ -1,0 +1,15 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "eslint.run": "onSave",
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.welcome.enabled": false,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "window.zoomLevel": 0,
+    "cSpell.includeRegExpList": [
+        "/(\/\\*([\\s\\S]*?)\\*\/)|(\/\/(.*)$)/gm"
+    ],
+    "vsicons.dontShowNewVersionMessage": true,
+    "typescript.check.tscVersion": false,
+    "gitlens.blame.line.enabled": false
+}
