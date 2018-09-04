@@ -1,0 +1,22 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = Adam Barnhard
+	email = adam.barnhard@whereveriwork.com
+
+[alias]
+    # https://stackoverflow.com/a/39616600 utility to escape commands for aliases
+    # quote-string = "!read -r l; printf \\\"!; printf %s \"$l\" | sed 's/\\([\\\"]\\)/\\\\\\1/g'; printf \" #\\\"\\n\" #"
+    scrub = "!f(){ git scrubbranches && git prstashclean; };f"
+    scrubbranches = "!f(){ git fetch --all -p; git branch -vv | grep gone | awk '{ print $1 }' | xargs -n 1 git branch -d; };f"
+    prstashclean = "!f(){ git for-each-ref --format=\"%(refname:short)\" refs/heads/ | grep \"pr/[:digit:]*\" | xargs git branch -D; };f"
+    prstash = "!f(){ \
+                   git checkout master        && \
+                   git fetch origin           && \
+                   (git branch -D pr/$1 || :) && \
+                   git fetch origin refs/pull-requests/$1/merge:pr/$1 && \
+                   git checkout pr/$1; \
+               };f"
+
+[core]
+	editor = /usr/bin/vim
